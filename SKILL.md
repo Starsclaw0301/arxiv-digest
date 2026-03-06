@@ -94,8 +94,8 @@ python src/fetcher.py
 ```bash
 source .venv/bin/activate
 python src/processor.py
-# 跳过 Zotero 同步（测试用）：
-python src/processor.py --dry-run
+# 显式同步到 Zotero（仅在用户调用 /papersave 时使用）：
+python src/processor.py --sync
 ```
 
 此命令：
@@ -103,7 +103,7 @@ python src/processor.py --dry-run
 2. 检测每篇相关论文的 **venue**（ICRA/IROS/CoRL/NeurIPS 等）
 3. 从摘要中提取 **project page URL**
 4. 生成带评星、分主题、末尾附"今日必读"的 Markdown 日报，写入 `digests/YYYY-MM-DD.md`
-5. 将相关论文同步到 Zotero（按 arXiv ID 去重，附 PDF）
+5. **默认不同步 Zotero**；仅当传入 `--sync` 时才同步（由用户主动调用 `/papersave` 触发）
 
 完成后，将 `digests/YYYY-MM-DD.md` 的内容直接发给用户。
 

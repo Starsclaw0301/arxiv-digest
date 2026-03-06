@@ -253,4 +253,5 @@ def main(dry_run: bool = False):
 
 if __name__ == "__main__":
     import sys
-    main(dry_run="--dry-run" in sys.argv)
+    # Default to dry_run=True; only sync Zotero when --sync is explicitly passed
+    main(dry_run="--sync" not in sys.argv)
